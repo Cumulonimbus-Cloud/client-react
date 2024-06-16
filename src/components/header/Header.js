@@ -2,9 +2,16 @@ import { Link } from 'react-router-dom';
 import { LogoIcon, QuestionMarkIcon } from '../../assets/header';
 import './Header.css';
 import React from 'react';
+import Modal from './Modal';
 
 
 function Header() {
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
     return (
         <header id="header">
             <Link id='header-logo' to="/">
@@ -12,7 +19,8 @@ function Header() {
                 <div id='header-title'>Chat<br/>Bot</div>
             </Link>
 
-            <QuestionMarkIcon id="question-mark-icon" />
+            <QuestionMarkIcon id="question-mark-icon" onClick={openModal} />
+            <Modal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         </header>
     );
 }
