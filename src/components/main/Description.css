@@ -1,0 +1,20 @@
+#main-description {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+#main-transcript-icon {
+    width: 7em;
+    height: 7em;
+}
+
+#main-description-content {
+    color: #636363;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 0.3em;
+    width: max-content;
+}
