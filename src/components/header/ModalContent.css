@@ -1,0 +1,27 @@
+#x-icon {
+    position: absolute;
+    top: 1.2em;
+    right: 1.2em;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+#modal-title {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #424242;
+}
+
+#modal-subtitle {
+    text-align: center;
+    font-size: 0.9em;
+    color: #636363;
+    margin-bottom: 1.4em;
+}
+
+.modal-contents {
+    font-size: 1em;
+    color: #424242;
+}

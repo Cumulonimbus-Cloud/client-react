@@ -1,0 +1,57 @@
+#header {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    height: 4.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 0 1.5em;
+}
+
+#header-logo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    outline: none;
+}
+
+#header-logo:hover, #header-logo:active {
+    text-decoration: none;
+    color: black;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 0.4em 0.5em 0.4em 0em;
+}
+
+#header-logo:active {
+    background-color: #f0f0f0;
+}
+
+#logo-icon {
+    width: 3em;
+    height: 3em;
+}
+
+#header-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 0.5em;
+}
+
+#question-mark-icon {
+    margin-left: auto;
+    width: 2.4em;
+    height: 2.4em;
+}
+
+#question-mark-icon:hover, #question-mark-icon:active {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 100px;
+}
+
+#question-mark-icon:active {
+    background-color: #e6e6e6;
+}
