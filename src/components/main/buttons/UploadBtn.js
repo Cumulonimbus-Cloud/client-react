@@ -1,4 +1,4 @@
-import { UploadIcon } from "../../assets/main";
+import { UploadIcon } from "../../../assets/main";
 import "./UploadBtn.css";
 
 function UploadBtn() {
