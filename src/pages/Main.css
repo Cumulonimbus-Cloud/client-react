@@ -2,9 +2,3 @@
     height: calc(100% - 4.5em);
     padding: 0 1.5em;
 }
-
-#bottom-contents {
-    position: absolute;
-    bottom: 1.8em;
-    width: calc(100% - 3em);
-}

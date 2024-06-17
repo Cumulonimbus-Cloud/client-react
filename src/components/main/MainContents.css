@@ -1,0 +1,9 @@
+#bottom-contents {
+    position: absolute;
+    bottom: 1.8em;
+    width: calc(100% - 3em);
+}
+
+#main-btns-wrapper {
+    display: flex;
+}
