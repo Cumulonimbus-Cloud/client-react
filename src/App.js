@@ -16,7 +16,11 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main isLogin={isLogin} hasGradCard={hasGradCard} />} />
+        <Route path="/" element={<Main 
+          isLogin={isLogin}
+          hasGradCard={hasGradCard}
+          accessToken={accessToken}
+          setHasGradCard={setHasGradCard}/>} />
         <Route path="/kakao-redirect"
           element={<KakaoRedirect
                     setIsLogin={setIsLogin}
