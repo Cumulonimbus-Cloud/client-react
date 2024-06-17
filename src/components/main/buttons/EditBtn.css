@@ -1,5 +1,14 @@
-#edit-btn {
+#edit-btn-wrapper {
     flex: 1;
+    margin-right: 0.4em;
+    background-color: #00BAF2;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#edit-btn {
+    width: 100%;
     height: 3em;
     min-width: max-content;
     font-size: 1.2em;
@@ -9,7 +18,6 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    margin-right: 0.8em;
 }
 
 #edit-btn:hover {
