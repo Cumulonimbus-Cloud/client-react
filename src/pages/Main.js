@@ -1,14 +1,12 @@
-import { Description, ExampleQuestion, UploadBtn } from "../components/main";
+import { Description, MainContents, LoginBtn } from "../components/main";
 import "./Main.css";
 
-function Main() {
+function Main({ isLogin }) {
+  console.log(isLogin);
   return (
     <div id="main-wrapper">
         <Description />
-        <div id="bottom-contents">
-            <ExampleQuestion />
-            <UploadBtn />
-        </div>
+        {isLogin ? <MainContents /> : <LoginBtn />}
     </div>
   );
 }
