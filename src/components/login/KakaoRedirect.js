@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 import './KakaoRedirect.css';
 
 function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
+    //const [isKakaoRedirect, setIsKakaoRedirect] = React.useState(false);
+
     const socialType = "kakao";
     const code = new URLSearchParams(window.location.search).get("code");
     //const code = ""
@@ -12,6 +14,13 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
     }
 
     useEffect(() => {
+        // const currentUrl = window.location.href;
+        // if (currentUrl.includes("kakao-redirect")) {
+        //     setIsKakaoRedirect(true);
+        // }
+        // console.log("currentUrl: ", currentUrl);
+        // console.log("isKakaoRedirect: ", currentUrl.includes("kakao-redirect"));
+
         fetch(`http://13.214.147.170:8080/api/v1/auth/${socialType}/login?code=${code}`, {
             method: "POST",
             headers: headers,
@@ -27,7 +36,6 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
             console.error(error);
         })
     }, [])
-    
 
     return (
         <>

@@ -22,6 +22,11 @@ function App() {
                     setIsLogin={setIsLogin}
                     setAccessToken={setAccessToken}
                     isLogin={isLogin} />} />
+        <Route path='*'
+          element={<KakaoRedirect
+            setIsLogin={setIsLogin}
+            setAccessToken={setAccessToken}
+            isLogin={isLogin} />} />
       </Routes>
     </div>
   );
