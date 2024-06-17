@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Main } from './pages';
+import { Main, Chat } from './pages';
 import { KakaoRedirect } from './components/login';
 import Header from './components/header/Header';
 import './App.css';
@@ -22,6 +22,7 @@ function App() {
                     setIsLogin={setIsLogin}
                     setAccessToken={setAccessToken}
                     isLogin={isLogin} />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path='*'
           element={<KakaoRedirect
             setIsLogin={setIsLogin}
