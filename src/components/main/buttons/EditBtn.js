@@ -11,15 +11,17 @@ function EditBtn({ accessToken }) {
 
   useEffect(() => {
     if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      console.log(selectedFile);
+
       fetch('http://13.214.147.170:8080/api/v1/grade_card', {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({
-          gradeCard: selectedFile,
-        })
+        body: formData,
       })
       .then((response) => response.json())
       .then((data) => {
