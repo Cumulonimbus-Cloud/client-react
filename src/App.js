@@ -6,8 +6,8 @@ import Header from './components/header/Header';
 import './App.css';
 
 function App() {
-  const [isLogin, setIsLogin] = React.useState(true);
-  const [hasGradCard, setHasGradCard] = React.useState(true);
+  const [isLogin, setIsLogin] = React.useState(false);
+  const [hasGradCard, setHasGradCard] = React.useState(false);
   const [accessToken, setAccessToken] = React.useState("");
 
   console.log(process.env.REACT_APP_K_REST_API);
