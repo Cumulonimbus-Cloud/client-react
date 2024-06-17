@@ -4,7 +4,6 @@
 
 .chat-elem-wrappers.question, .chat-elem-wrappers.user {
     margin-left: 2em;
-    overflow: hidden;
 }
 
 .chat-elems {

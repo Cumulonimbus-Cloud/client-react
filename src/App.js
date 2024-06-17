@@ -24,7 +24,7 @@ function App() {
                     setIsLogin={setIsLogin}
                     setAccessToken={setAccessToken}
                     isLogin={isLogin} />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat" element={<Chat accessToken={accessToken} />} />
         <Route path='*'
           element={<KakaoRedirect
             setIsLogin={setIsLogin}
