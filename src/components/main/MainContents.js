@@ -1,10 +1,17 @@
+import { ChattingBtn, EditBtn } from './buttons';
 import { ExampleQuestion, UploadBtn } from './index';
+import './MainContents.css';
 
-function MainContents() {
+function MainContents({ hasGradCard }) {
   return (
     <div id="bottom-contents">
         <ExampleQuestion />
-        <UploadBtn />
+        {hasGradCard ? 
+          <div id='main-btns-wrapper'>
+            <EditBtn />
+            <ChattingBtn />
+          </div>
+         : <UploadBtn />}
     </div>
   );
 }

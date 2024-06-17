@@ -6,14 +6,17 @@ import Header from './components/header/Header';
 import './App.css';
 
 function App() {
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(true);
+  const [hasGradCard, setHasGradCard] = React.useState(true);
   const [accessToken, setAccessToken] = React.useState("");
+
+  console.log(process.env.REACT_APP_K_REST_API);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main isLogin={isLogin} />} />
+        <Route path="/" element={<Main isLogin={isLogin} hasGradCard={hasGradCard} />} />
         <Route path="/kakao-redirect"
           element={<KakaoRedirect
                     setIsLogin={setIsLogin}
