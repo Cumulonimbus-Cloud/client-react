@@ -1,0 +1,45 @@
+#login-btn {
+    width: calc(100% - 10em);
+    min-width: max-content;
+    padding: 0em 3em;
+    height: 3em;
+    font-size: 1.2em;
+    background-color: #FEE500;
+    color: #181818;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 6em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#login-btn:hover {
+    background-color: #FDD835;
+}
+
+#login-btn:active {
+    background-color: #FCD34D;
+}
+
+#login-btn:focus {
+    outline: none;
+}
+
+#login-btn-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#kakao-icon {
+    width: 1.4em;
+    height: 1.2em;
+}
+
+#login-btn-title {
+    margin-left: 0.6em;
+}
