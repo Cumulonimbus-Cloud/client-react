@@ -1,5 +1,13 @@
-#chatting-btn {
+#chatting-btn-wrapper {
     flex: 1;
+    margin-left: 0.4em;
+    background-color: #04B3CE;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#chatting-btn {
     height: 3em;
     font-size: 1.2em;
     min-width: max-content;
