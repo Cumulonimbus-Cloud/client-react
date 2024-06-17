@@ -2,7 +2,7 @@ import { ChattingBtn, EditBtn, UploadBtn } from './buttons';
 import { ExampleQuestion } from './index';
 import './MainContents.css';
 
-function MainContents({ hasGradCard }) {
+function MainContents({ hasGradCard, accessToken, setHasGradCard }) {
   return (
     <div id="bottom-contents">
         <ExampleQuestion />
@@ -11,7 +11,7 @@ function MainContents({ hasGradCard }) {
             <EditBtn />
             <ChattingBtn />
           </div>
-         : <UploadBtn />}
+         : <UploadBtn accessToken={accessToken} setHasGradCard={setHasGradCard} />}
     </div>
   );
 }
