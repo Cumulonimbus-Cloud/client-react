@@ -14,7 +14,7 @@ function UploadBtn({ accessToken, setHasGradCard }) {
   useEffect(() => {
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('gradeCard', selectedFile);
+      formData.append('file', selectedFile);
 
       console.log(selectedFile);
       
