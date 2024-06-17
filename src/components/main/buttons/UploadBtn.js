@@ -13,15 +13,15 @@ function UploadBtn({ accessToken, setHasGradCard }) {
 
   useEffect(() => {
     if (selectedFile) {
+      const formData = new FormData();
+      formData.append('gradeCard', selectedFile);
+      
       fetch('http://13.214.147.170:8080/api/v1/grade_card', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({
-          gradeCard: selectedFile,
-        })
+        body: formData,
       })
       .then((response) => response.json())
       .then((data) => {
