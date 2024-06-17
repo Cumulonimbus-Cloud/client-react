@@ -10,8 +10,6 @@ function App() {
   const [hasGradCard, setHasGradCard] = React.useState(false);
   const [accessToken, setAccessToken] = React.useState("");
 
-  console.log(process.env.REACT_APP_K_REST_API);
-
   return (
     <div className="App">
       <Header />

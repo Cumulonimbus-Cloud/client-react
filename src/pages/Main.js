@@ -3,7 +3,6 @@ import { LoginBtn } from "../components/login";
 import "./Main.css";
 
 function Main({ isLogin, hasGradCard, accessToken, setHasGradCard }) {
-  console.log(isLogin);
   return (
     <div id="main-wrapper">
         <Description />
