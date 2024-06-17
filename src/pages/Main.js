@@ -1,4 +1,5 @@
-import { Description, MainContents, LoginBtn } from "../components/main";
+import { Description, MainContents } from "../components/main";
+import { LoginBtn } from "../components/login";
 import "./Main.css";
 
 function Main({ isLogin }) {
