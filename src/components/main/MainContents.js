@@ -8,7 +8,7 @@ function MainContents({ hasGradCard, accessToken, setHasGradCard }) {
         <ExampleQuestion />
         {hasGradCard ? 
           <div id='main-btns-wrapper'>
-            <EditBtn />
+            <EditBtn accessToken={accessToken} />
             <ChattingBtn />
           </div>
          : <UploadBtn accessToken={accessToken} setHasGradCard={setHasGradCard} />}
