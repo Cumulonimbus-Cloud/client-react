@@ -1,5 +1,5 @@
-import { ChattingBtn, EditBtn } from './buttons';
-import { ExampleQuestion, UploadBtn } from './index';
+import { ChattingBtn, EditBtn, UploadBtn } from './buttons';
+import { ExampleQuestion } from './index';
 import './MainContents.css';
 
 function MainContents({ hasGradCard }) {
