@@ -15,6 +15,8 @@ function UploadBtn({ accessToken, setHasGradCard }) {
     if (selectedFile) {
       const formData = new FormData();
       formData.append('gradeCard', selectedFile);
+
+      console.log(selectedFile);
       
       fetch('http://13.214.147.170:8080/api/v1/grade_card', {
         method: 'POST',
