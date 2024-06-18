@@ -23,11 +23,11 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
         formattedChats.push({ message: chat.text.S, type: 'user', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
         formattedChats.push({ message: chat.message.S, type: 'bot', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
         if (index < chatList.length - 1) {
-          formattedChats.push(initialBotMessage);
           formattedChats.push({ message: '다시 질문하기', type: 'user', date: new Date().toISOString() });
+          formattedChats.push(initialBotMessage);
         }
       });
-      formattedChats.push(askAgainMessage);
+      //formattedChats.push(askAgainMessage);
       setChats(formattedChats);
     }
     console.log(chatList)
@@ -112,7 +112,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
 export default QuestionList;
 
 const initialBotMessage = {
-  message: '안녕하세요! 인덕봇입니다 🦆 무엇이 궁금하신가요?',
+  message: '안녕하세요! 인덕봇입니다 🦆\n무엇이 궁금하신가요?',
   type: 'bot',
   date: new Date().toISOString()
 };
