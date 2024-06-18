@@ -8,13 +8,28 @@
     padding: 0 1.5em;
 }
 
+.header-logo-chat-open {
+    margin-left: -0.8em;
+}
+
+#header-right-btns {
+    display: flex;
+    align-items: center;
+}
+
 #header-logo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     color: black;
     text-decoration: none;
     outline: none;
+}
+
+#prev-icon {
+    width: 1.8em;
+    height: 1.8em;
+    margin-right: 0.4em;
 }
 
 #header-logo:hover, #header-logo:active {
