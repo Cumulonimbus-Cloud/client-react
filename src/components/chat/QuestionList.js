@@ -11,6 +11,24 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [customQuestion, setCustomQuestion] = useState('');
+  const [loadingDots, setLoadingDots] = useState('');
+
+  useEffect(() => {
+    let interval;
+    if (isWaitingForResponse) {
+      interval = setInterval(() => {
+        setLoadingDots(prev => {
+          if (prev === ' 🦆 🦆 🦆') return '';
+          return prev + ' 🦆';
+        });
+      }, 500); // 0.5초마다 상태 변경
+    } else {
+      setLoadingDots('');
+    }
+
+    return () => clearInterval(interval);
+  }, [isWaitingForResponse]);
+
 
   const goToMain = () => {
     navigate('/');
@@ -52,7 +70,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
     const newChats = [
       ...chats,
       clickedQuestion,
-      { message: '응답을 기다리는 중입니다...', type: 'bot', date: new Date().toISOString() }
     ];
     setChats(newChats);
     setShowQuestions(false);
@@ -70,7 +87,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
     .then((data) => {
       setChats((prevChats) => {
         const updatedChats = [...prevChats];
-        updatedChats.pop();
         updatedChats.push({ message: data.result.answer, type: 'bot', date: new Date().toISOString() });
         return updatedChats;
       });
@@ -81,7 +97,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
       console.error('Error fetching answer:', error);
       setChats((prevChats) => {
         const updatedChats = [...prevChats];
-        updatedChats.pop();
         updatedChats.push({ message: '답변을 가져오는데 실패했습니다. 다시 시도해주세요.', type: 'bot', date: new Date().toISOString() });
         return updatedChats;
       });
@@ -114,7 +129,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
     const newChats = [
       ...chats,
       { message: customQuestion, type: 'user', date: new Date().toISOString() },
-      { message: '응답을 기다리는 중입니다...', type: 'bot', date: new Date().toISOString() }
     ];
     setChats(newChats);
     setShowInput(false);
@@ -132,7 +146,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
     .then((data) => {
       setChats((prevChats) => {
         const updatedChats = [...prevChats];
-        updatedChats.pop();
         updatedChats.push({ message: data.result.answer, type: 'bot', date: new Date().toISOString() });
         return updatedChats;
       });
@@ -143,7 +156,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
       console.error('Error fetching answer:', error);
       setChats((prevChats) => {
         const updatedChats = [...prevChats];
-        updatedChats.pop();
         updatedChats.push({ message: '답변을 가져오는데 실패했습니다. 다시 시도해주세요.', type: 'bot', date: new Date().toISOString() });
         return updatedChats;
       });
@@ -201,6 +213,18 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
             key="ask-again"
             chat={askAgainMessage}
             onClick={handleAskAgainClick}
+          />
+        </div>
+      )}
+      {isWaitingForResponse && (
+        <div className={`wrapper-hidden`}>
+          <ChatElem 
+            style={{ height: 'flex', justifyContent: 'center' }}
+            chat={{
+              message: `응답을 기다리는 중입니다...${loadingDots}`,
+              type: 'bot',
+              date: new Date().toISOString()
+            }}
           />
         </div>
       )}
