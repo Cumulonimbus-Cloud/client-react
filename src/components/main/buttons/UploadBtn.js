@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { UploadIcon } from "../../../assets/main";
+import Modal from '../../header/Modal';
 import "./UploadBtn.css";
 
 function UploadBtn({ accessToken, setHasGradCard }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -33,6 +35,7 @@ function UploadBtn({ accessToken, setHasGradCard }) {
       .catch((error) => {
         console.error(error);
       });
+      setIsOpen(true);
     }
     else {
       console.log('파일을 선택해주세요.');
@@ -59,6 +62,11 @@ function UploadBtn({ accessToken, setHasGradCard }) {
           <div id="upload-btn-title">참고용 성적표 업로드</div>
         </div>
       </button>
+
+      <Modal
+        modalIsOpen={modalIsOpen}
+        setIsOpen={setIsOpen} 
+        modalContent={"upload"} />
     </div>
   );
 }

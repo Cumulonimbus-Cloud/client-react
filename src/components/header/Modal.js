@@ -2,6 +2,8 @@ import Modal from 'react-modal';
 import ModalContent from './ModalContent';
 import './Modal.css';
 import LogoutContent from './LogoutContent';
+import EditModal from './EditModal';
+import UploadModal from './UploadModal';
 
 const customStyles = {
     overlay: {
@@ -36,14 +38,24 @@ function DescriptionModal({ modalIsOpen, setIsOpen, modalContent, setAccessToken
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal" >
-            {modalContent === 'question' ?
-                <ModalContent closeModal={closeModal}  /> :
-                <LogoutContent
-                    closeModal={closeModal}
-                    setAccessToken={setAccessToken}
-                    setIsLogin={setIsLogin}
-                    setHasGradCard={setHasGradCard} />
-            }
+            {modalContent === 'question' ? (
+                <ModalContent closeModal={closeModal} />
+            ) : (
+                modalContent === 'logout' ? (
+                    <LogoutContent
+                        closeModal={closeModal}
+                        setAccessToken={setAccessToken}
+                        setIsLogin={setIsLogin}
+                        setHasGradCard={setHasGradCard}
+                    />
+                ) : (
+                    modalContent === 'edit' ? (
+                        <EditModal closeModal={closeModal} />
+                    ) : (
+                        <UploadModal closeModal={closeModal} />
+                    )
+                )
+            )}
         </Modal>
     );
 }
