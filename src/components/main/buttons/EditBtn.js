@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { UploadIcon } from "../../../assets/main";
 import './EditBtn.css';
+import Modal from '../../header/Modal';
+import React from 'react';
 
 function EditBtn({ accessToken }) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -30,6 +33,7 @@ function EditBtn({ accessToken }) {
       .catch((error) => {
         console.error(error);
       })
+      setIsOpen(true);
     }
     else {
       console.log('파일을 선택해주세요.');
@@ -54,6 +58,11 @@ function EditBtn({ accessToken }) {
           <div id="edit-btn-title">성적표 수정</div>
         </div>
       </button>
+
+      <Modal
+        modalIsOpen={modalIsOpen} 
+        setIsOpen={setIsOpen} 
+        modalContent={"edit"} />
     </div>
   );
 }
