@@ -51,7 +51,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ chatId: idx+1, ect: null }),
+      body: JSON.stringify({ chatId: idx+1, etc: null }),
     })
     .then((response) => response.json())
     .then((data) => {
@@ -113,7 +113,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ chatId: 6, ect: customQuestion }),
+      body: JSON.stringify({ chatId: 6, etc: customQuestion }),
     })
     .then((response) => response.json())
     .then((data) => {
