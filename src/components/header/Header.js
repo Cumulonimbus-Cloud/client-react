@@ -23,7 +23,7 @@ function Header({ setAccessToken, setIsLogin, setHasGradCard, isLogin }) {
         <header id="header">
             <Link id='header-logo' to="/">
                 <LogoIcon id="logo-icon" />
-                <div id='header-title'>Chat<br/>Bot</div>
+                {/* <div id='header-title'>Chat<br/>Bot</div> */}
             </Link>
 
             <QuestionMarkIcon id="question-mark-icon" onClick={handleQuestionClick} />
