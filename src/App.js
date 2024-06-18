@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [isLogin, setIsLogin] = React.useState(false);
-  const [hasGradCard, setHasGradCard] = React.useState(false);
+  const [hasGradCard, setHasGradCard] = React.useState(localStorage.getItem('hasGradCard') || false);
   const [accessToken, setAccessToken] = React.useState(localStorage.getItem('kakaoToken') || '');
 
   useEffect(() => {
