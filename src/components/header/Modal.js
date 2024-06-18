@@ -16,7 +16,11 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         borderRadius: '20px',
-        border: 'none'
+        border: 'none',
+        padding: '20px', 
+        maxWidth: '90%',
+        maxHeight: '90%',
+        boxSizing: 'border-box'
     },
 };
 
