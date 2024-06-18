@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Main, Chat } from './pages';
 import { KakaoRedirect } from './components/login';
@@ -8,7 +8,16 @@ import './App.css';
 function App() {
   const [isLogin, setIsLogin] = React.useState(false);
   const [hasGradCard, setHasGradCard] = React.useState(false);
-  const [accessToken, setAccessToken] = React.useState("");
+  const [accessToken, setAccessToken] = React.useState(localStorage.getItem('kakaoToken') || '');
+
+  useEffect(() => {
+    if (accessToken) {
+      setIsLogin(true);
+      localStorage.setItem('kakaoToken', accessToken);
+    } else {
+      localStorage.removeItem('kakaoToken');
+    }
+  }, [accessToken]);
 
   return (
     <div className="App">
