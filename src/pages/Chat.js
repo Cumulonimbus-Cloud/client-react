@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { QuestionList } from '../components/chat';
 import './Chat.css';
 
-function Chat({ accessToken }) {
+function Chat({ accessToken, setIsChatOpen }) {
     const [chatList, setChatList] = React.useState([]);
     const chatContainerRef = useRef(null);
 
@@ -22,6 +22,7 @@ function Chat({ accessToken }) {
         .catch((error) => {
             console.error(error);
         })
+        setIsChatOpen(true);
     }, [])
 
     return (

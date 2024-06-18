@@ -9,6 +9,7 @@ function App() {
   const [isLogin, setIsLogin] = React.useState(false);
   const [hasGradCard, setHasGradCard] = React.useState(localStorage.getItem('hasGradCard') || false);
   const [accessToken, setAccessToken] = React.useState(localStorage.getItem('kakaoToken') || '');
+  const [isChatOpen, setIsChatOpen] = React.useState(false);
 
   useEffect(() => {
     if (accessToken) {
@@ -25,20 +26,22 @@ function App() {
         isLogin={isLogin}
         setIsLogin={setIsLogin}
         setHasGradCard={setHasGradCard}
-        setAccessToken={setAccessToken} />
+        setAccessToken={setAccessToken}
+        isChatOpen={isChatOpen} />
       <Routes>
         <Route path="/" element={<Main 
           isLogin={isLogin}
           hasGradCard={hasGradCard}
           accessToken={accessToken}
-          setHasGradCard={setHasGradCard}/>} />
+          setHasGradCard={setHasGradCard}
+          setIsChatOpen={setIsChatOpen}/>} />
         <Route path="/kakao-redirect"
           element={<KakaoRedirect
                     setIsLogin={setIsLogin}
                     setAccessToken={setAccessToken}
                     isLogin={isLogin}
                     setHasGradCard={setHasGradCard} />} />
-        <Route path="/chat" element={<Chat accessToken={accessToken} />} />
+        <Route path="/chat" element={<Chat accessToken={accessToken} setIsChatOpen={setIsChatOpen}  />} />
         <Route path='*'
           element={<KakaoRedirect
             setIsLogin={setIsLogin}
