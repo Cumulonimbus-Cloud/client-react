@@ -17,6 +17,7 @@ function Chat({ accessToken }) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
+            setChatList(data.result.chatHistory);
         })
         .catch((error) => {
             console.error(error);
@@ -25,7 +26,7 @@ function Chat({ accessToken }) {
 
     return (
         <div id="chat-wrapper" ref={chatContainerRef}>
-            <QuestionList chatContainerRef={chatContainerRef} />
+            <QuestionList chatContainerRef={chatContainerRef} chatList={chatList} accessToken={accessToken} />
         </div>
     );
 };
