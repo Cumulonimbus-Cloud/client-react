@@ -3,6 +3,7 @@ import ModalContent from './ModalContent';
 import './Modal.css';
 import LogoutContent from './LogoutContent';
 import EditModal from './EditModal';
+import UploadModal from './UploadModal';
 
 const customStyles = {
     overlay: {
@@ -47,7 +48,13 @@ function DescriptionModal({ modalIsOpen, setIsOpen, modalContent, setAccessToken
                         setIsLogin={setIsLogin}
                         setHasGradCard={setHasGradCard}
                     />
-                ) : (<EditModal closeModal={closeModal} />)
+                ) : (
+                    modalContent === 'edit' ? (
+                        <EditModal closeModal={closeModal} />
+                    ) : (
+                        <UploadModal closeModal={closeModal} />
+                    )
+                )
             )}
         </Modal>
     );
