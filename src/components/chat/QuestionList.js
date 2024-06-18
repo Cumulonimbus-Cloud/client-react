@@ -1,14 +1,27 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ChatElem from './ChatElem';
 import './QuestionList.css';
 import { LogoWhiteIcon } from '../../assets/header';
 
 function QuestionList({ chatContainerRef, accessToken, chatList }) {
+  const navigate = useNavigate();
   const [chats, setChats] = useState([initialBotMessage]);
   const [showQuestions, setShowQuestions] = useState(true);
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [customQuestion, setCustomQuestion] = useState('');
+
+  const goToMain = () => {
+    navigate('/');
+  };
+
+  useEffect(() => {
+    if (!localStorage.getItem('kakaoToken')) {
+      setChats([initialBotMessage]);
+      goToMain();
+    }
+  }, [accessToken]);
 
   useLayoutEffect(() => {
     if (chatContainerRef.current) {
@@ -17,7 +30,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
   }, [chats]);
 
   useEffect(() => {
-    if (chatList.length === 0) {
+    if (!chatList || chatList.length === 0) {
       setChats([initialBotMessage]);
     } else {
       setShowQuestions(false)

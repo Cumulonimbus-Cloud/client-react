@@ -5,10 +5,17 @@ import React from 'react';
 import Modal from './Modal';
 
 
-function Header() {
+function Header({ setAccessToken, setIsLogin, setHasGradCard, isLogin }) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalContent, setModalContent] = React.useState('');
 
-    function openModal() {
+    function handleQuestionClick() {
+        setModalContent('question');
+        setIsOpen(true);
+    }
+
+    function handleLogoutClick() {
+        setModalContent('logout');
         setIsOpen(true);
     }
 
@@ -19,9 +26,16 @@ function Header() {
                 <div id='header-title'>Chat<br/>Bot</div>
             </Link>
 
-            <QuestionMarkIcon id="question-mark-icon" onClick={openModal} />
-            <LogoutIcon id="logout-icon" />
-            <Modal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
+            <QuestionMarkIcon id="question-mark-icon" onClick={handleQuestionClick} />
+            {isLogin && <LogoutIcon id="logout-icon" onClick={handleLogoutClick} />}
+            <Modal
+                isLogin={isLogin}
+                modalIsOpen={modalIsOpen} 
+                setIsOpen={setIsOpen} 
+                modalContent={modalContent}
+                setIsLogin={setIsLogin}
+                setHasGradCard={setHasGradCard}
+                setAccessToken={setAccessToken} />
         </header>
     );
 }

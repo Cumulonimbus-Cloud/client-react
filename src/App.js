@@ -21,7 +21,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+        setHasGradCard={setHasGradCard}
+        setAccessToken={setAccessToken} />
       <Routes>
         <Route path="/" element={<Main 
           isLogin={isLogin}
