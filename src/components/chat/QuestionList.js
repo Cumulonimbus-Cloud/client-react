@@ -23,8 +23,8 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
         formattedChats.push({ message: chat.text.S, type: 'user', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
         formattedChats.push({ message: chat.message.S, type: 'bot', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
         if (index < chatList.length - 1) {
-          formattedChats.push(initialBotMessage);
           formattedChats.push({ message: '다시 질문하기', type: 'user', date: new Date().toISOString() });
+          formattedChats.push(initialBotMessage);
         }
       });
       formattedChats.push(askAgainMessage);
