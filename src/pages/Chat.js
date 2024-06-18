@@ -23,6 +23,7 @@ function Chat({ accessToken, setIsChatOpen }) {
             console.error(error);
         })
         setIsChatOpen(true);
+        console.log('Chat opened');
     }, [])
 
     return (
