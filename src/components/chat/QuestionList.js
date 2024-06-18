@@ -30,7 +30,6 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
           formattedChats.push(initialBotMessage);
         }
       });
-      //formattedChats.push(askAgainMessage);
       setChats(formattedChats);
     }
     console.log(chatList)
@@ -52,7 +51,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ chatId: idx+1 }),
+      body: JSON.stringify({ chatId: idx+1, ect: null }),
     })
     .then((response) => response.json())
     .then((data) => {
@@ -75,6 +74,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
       });
       setIsWaitingForResponse(false);
     });
+    setShowQuestions(false);
   };
 
   const handleAskAgainClick = () => {
@@ -85,6 +85,66 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
     ];
     setChats(newChats);
     setShowQuestions(true);
+  };
+
+  const handleOtherQuestionClick = () => {
+    setShowInput(true);
+  };
+
+  const handleInputChange = (event) => {
+    setCustomQuestion(event.target.value);
+  };
+
+  const handleCustomQuestionSubmit = () => {
+    if (customQuestion.trim() === '') return;
+
+    const newChats = [
+      ...chats,
+      { message: customQuestion, type: 'user', date: new Date().toISOString() },
+      { message: '응답을 기다리는 중입니다...', type: 'bot', date: new Date().toISOString() }
+    ];
+    setChats(newChats);
+    setShowInput(false);
+    setIsWaitingForResponse(true);
+
+    fetch('http://47.128.3.240:8080/api/v1/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({ chatId: 6, ect: customQuestion }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setChats((prevChats) => {
+        const updatedChats = [...prevChats];
+        updatedChats.pop();
+        updatedChats.push({ message: data.result.answer, type: 'bot', date: new Date().toISOString() });
+        return updatedChats;
+      });
+      setIsWaitingForResponse(false);
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error fetching answer:', error);
+      setChats((prevChats) => {
+        const updatedChats = [...prevChats];
+        updatedChats.pop();
+        updatedChats.push({ message: '답변을 가져오는데 실패했습니다. 다시 시도해주세요.', type: 'bot', date: new Date().toISOString() });
+        return updatedChats;
+      });
+      setIsWaitingForResponse(false);
+      setShowInput(false);
+    });
+    setCustomQuestion('');
+    setShowQuestions(false);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && customQuestion.trim() !== '') {
+      handleCustomQuestionSubmit();
+    }
   };
 
   return (
@@ -101,7 +161,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
           ))}
         </div>
         <div className={`wrapper-hidden ${showInput ? 'showinput' : ''}`}>
-          {showQuestions && !showInput && <ChatElem chat={otherQuestion} />}
+          {showQuestions && !showInput && <ChatElem chat={otherQuestion} onClick={handleOtherQuestionClick} />}
         </div>
         <div>
           {showInput && (
@@ -109,9 +169,12 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
               <input
                 type='text'
                 value={customQuestion}
+                onKeyUp={handleKeyPress}
+                onChange={handleInputChange}
                 placeholder='질문을 입력하세요...'
               />
               <button
+                onClick={handleCustomQuestionSubmit}
                 disabled={customQuestion.trim() === ''}>
                 <LogoWhiteIcon />
               </button>
