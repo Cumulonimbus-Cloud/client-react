@@ -55,3 +55,20 @@
 #question-mark-icon:active {
     background-color: #e6e6e6;
 }
+
+#logout-icon {
+    width: 2.9em;
+    height: 2.9em;
+    margin-left: 0.3em;
+    margin-right: -0.5em;
+}
+
+#logout-icon:hover, #logout-icon:active {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 100px;
+}
+
+#logout-icon:active {
+    background-color: #e6e6e6;
+}

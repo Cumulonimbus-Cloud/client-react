@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
 import ModalContent from './ModalContent';
 import './Modal.css';
+import LogoutContent from './LogoutContent';
 
 const customStyles = {
     overlay: {
@@ -19,7 +20,7 @@ const customStyles = {
     },
 };
 
-function DescriptionModal({ modalIsOpen, setIsOpen }) {
+function DescriptionModal({ modalIsOpen, setIsOpen, modalContent, setAccessToken, setIsLogin, setHasGradCard }) {
     function closeModal() {
         setIsOpen(false);
     }
@@ -31,7 +32,14 @@ function DescriptionModal({ modalIsOpen, setIsOpen }) {
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal" >
-            <ModalContent closeModal={closeModal} />
+            {modalContent === 'question' ?
+                <ModalContent closeModal={closeModal}  /> :
+                <LogoutContent
+                    closeModal={closeModal}
+                    setAccessToken={setAccessToken}
+                    setIsLogin={setIsLogin}
+                    setHasGradCard={setHasGradCard} />
+            }
         </Modal>
     );
 }
