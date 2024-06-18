@@ -14,14 +14,7 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
     }
 
     useEffect(() => {
-        // const currentUrl = window.location.href;
-        // if (currentUrl.includes("kakao-redirect")) {
-        //     setIsKakaoRedirect(true);
-        // }
-        // console.log("currentUrl: ", currentUrl);
-        // console.log("isKakaoRedirect: ", currentUrl.includes("kakao-redirect"));
-
-        fetch(`http://13.214.147.170:8080/api/v1/auth/${socialType}/login?code=${code}`, {
+        fetch(`http://47.128.3.240:8080/api/v1/auth/${socialType}/login?code=${code}`, {
             method: "POST",
             headers: headers,
         })

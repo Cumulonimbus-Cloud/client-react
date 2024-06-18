@@ -18,7 +18,7 @@ function UploadBtn({ accessToken, setHasGradCard }) {
 
       console.log(selectedFile);
       
-      fetch('http://13.214.147.170:8080/api/v1/grade_card', {
+      fetch('http://47.128.3.240:8080/api/v1/grade_card', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,

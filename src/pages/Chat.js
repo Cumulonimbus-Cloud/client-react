@@ -7,7 +7,7 @@ function Chat({ accessToken }) {
     const chatContainerRef = useRef(null);
 
     useEffect(() => {
-        fetch('http://13.214.147.170:8080/api/v1/chat', {
+        fetch('http://47.128.3.240:8080/api/v1/chat', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
