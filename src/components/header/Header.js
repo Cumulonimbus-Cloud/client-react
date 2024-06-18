@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { LogoIcon, QuestionMarkIcon } from '../../assets/header';
+import { LogoIcon, LogoutIcon, QuestionMarkIcon } from '../../assets/header';
 import './Header.css';
 import React from 'react';
 import Modal from './Modal';
@@ -20,6 +20,7 @@ function Header() {
             </Link>
 
             <QuestionMarkIcon id="question-mark-icon" onClick={openModal} />
+            <LogoutIcon id="logout-icon" />
             <Modal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         </header>
     );
