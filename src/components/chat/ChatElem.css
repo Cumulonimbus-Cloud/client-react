@@ -1,0 +1,51 @@
+.chat-elem-wrappers.bot {
+    margin-right: 2em;
+}
+
+.chat-elem-wrappers.question, .chat-elem-wrappers.user {
+    margin-left: 2em;
+}
+
+.chat-elems {
+    background-color: #FFFFFF;
+    font-size: 0.9em;
+    border-radius: 10px 10px 10px 0px;
+    margin-bottom: 0.5em;
+    padding: 0.5em 0.8em 0.5em 0.7em;
+    width: fit-content;
+    text-align: left;
+}
+
+.chat-elems.question {
+    background-color: #A8C4D9;
+    margin-left: auto;
+    border-radius: 10px 10px 0px 10px;
+    padding: 0.5em 0.7em 0.5em 0.8em;
+    cursor: pointer;
+    float: right;
+    margin-left: 0.3em;
+    margin-right: 0em;
+}
+
+.chat-elems.question:hover {
+    background-color: #0066B3;
+    color: white;
+}
+
+.chat-elems.question:active {
+    background-color: #0059A4;
+}
+
+.chat-elems.question:focus {
+    outline: none;
+}
+
+.chat-elems.user {
+    background-color: #0066B3;
+    color: white;
+    margin-left: 2em;
+    margin-left: auto;
+    border-radius: 10px 10px 0px 10px;
+    padding: 0.5em 0.7em 0.5em 0.8em;
+    margin-right: 0em;
+}

@@ -1,0 +1,48 @@
+#edit-btn-wrapper {
+    flex: 1;
+    margin-right: 0.4em;
+    background-color: #00BAF2;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#edit-btn {
+    width: 100%;
+    height: 3em;
+    min-width: max-content;
+    font-size: 1.2em;
+    background-color: #00BAF2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#edit-btn:hover {
+    background-color: #00AEE3;
+}
+
+#edit-btn:active {
+    background-color: #00A1D4;
+}
+
+#edit-btn:focus {
+    outline: none;
+}
+
+#edit-btn-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-btn-icon {
+    width: 1.4em;
+    height: 1.2em;
+}
+
+#edit-btn-title {
+    margin-left: 0.6em;
+}

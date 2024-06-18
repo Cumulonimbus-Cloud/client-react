@@ -1,23 +1,54 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Main, Chat } from './pages';
+import { KakaoRedirect } from './components/login';
+import Header from './components/header/Header';
 import './App.css';
 
 function App() {
+  const [isLogin, setIsLogin] = React.useState(false);
+  const [hasGradCard, setHasGradCard] = React.useState(localStorage.getItem('hasGradCard') || false);
+  const [accessToken, setAccessToken] = React.useState(localStorage.getItem('kakaoToken') || '');
+  const [isChatOpen, setIsChatOpen] = React.useState(false);
+
+  useEffect(() => {
+    if (accessToken) {
+      setIsLogin(true);
+      localStorage.setItem('kakaoToken', accessToken);
+    } else {
+      localStorage.removeItem('kakaoToken');
+    }
+  }, [accessToken]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+        setHasGradCard={setHasGradCard}
+        setAccessToken={setAccessToken}
+        isChatOpen={isChatOpen} />
+      <Routes>
+        <Route path="/" element={<Main 
+          isLogin={isLogin}
+          hasGradCard={hasGradCard}
+          accessToken={accessToken}
+          setHasGradCard={setHasGradCard}
+          setIsChatOpen={setIsChatOpen}/>} />
+        <Route path="/kakao-redirect"
+          element={<KakaoRedirect
+                    setIsLogin={setIsLogin}
+                    setAccessToken={setAccessToken}
+                    isLogin={isLogin}
+                    setHasGradCard={setHasGradCard} />} />
+        <Route path="/chat" element={<Chat accessToken={accessToken} setIsChatOpen={setIsChatOpen}  />} />
+        <Route path='*'
+          element={<KakaoRedirect
+            setIsLogin={setIsLogin}
+            setAccessToken={setAccessToken}
+            isLogin={isLogin}
+            setHasGradCard={setHasGradCard} />} />
+      </Routes>
     </div>
   );
 }

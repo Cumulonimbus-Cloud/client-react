@@ -1,0 +1,48 @@
+#chatting-btn-wrapper {
+    flex: 1;
+    margin-left: 0.4em;
+    background-color: #04B3CE;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#chatting-btn {
+    width: 100%;
+    height: 3em;
+    font-size: 1.2em;
+    min-width: max-content;
+    background-color: #04B3CE;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#chatting-btn:hover {
+    background-color: #03A7B8;
+}
+
+#chatting-btn:active {
+    background-color: #0299B9;
+}
+
+#chatting-btn:focus {
+    outline: none;
+}
+
+#chatting-btn-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chatting-btn-icon {
+    width: 1.4em;
+    height: 1.2em;
+}
+
+#chatting-btn-title {
+    margin-left: 0.6em;
+}

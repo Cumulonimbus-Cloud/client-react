@@ -1,0 +1,4 @@
+#main-wrapper {
+    height: calc(100% - 4.5em);
+    padding: 0 1.5em;
+}
