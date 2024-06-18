@@ -1,11 +1,14 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import ChatElem from './ChatElem';
 import './QuestionList.css';
+import { LogoWhiteIcon } from '../../assets/header';
 
 function QuestionList({ chatContainerRef, accessToken, chatList }) {
   const [chats, setChats] = useState([initialBotMessage]);
   const [showQuestions, setShowQuestions] = useState(true);
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
+  const [showInput, setShowInput] = useState(false);
+  const [customQuestion, setCustomQuestion] = useState('');
 
   useLayoutEffect(() => {
     if (chatContainerRef.current) {
@@ -87,17 +90,37 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
   return (
     <div>
       {chats.map((chat, idx) => (
-        <div className='wrapper-hidden' key={idx}>
+        <div className={`wrapper-hidden ${showInput ? 'showinput' : ''}`} key={idx}>
           <ChatElem chat={{ ...chat, type: chat.type === 'bot' ? 'bot' : 'user' }} />
         </div>
       ))}
-      <div className='wrapper-hidden'>
-        {showQuestions && questionList.map((question, idx) => (
-          <ChatElem key={idx} chat={question} onClick={() => handleQuestionClick(question, idx)} />
-        ))}
-      </div>
+      <>
+        <div className={`wrapper-hidden ${showInput ? 'showinput' : ''}`}>
+          {showQuestions && !showInput && questionList.map((question, idx) => (
+            <ChatElem key={idx} chat={question} onClick={() => handleQuestionClick(question, idx)} />
+          ))}
+        </div>
+        <div className={`wrapper-hidden ${showInput ? 'showinput' : ''}`}>
+          {showQuestions && !showInput && <ChatElem chat={otherQuestion} />}
+        </div>
+        <div>
+          {showInput && (
+            <div className='input-wrapper fixed-bottom'>
+              <input
+                type='text'
+                value={customQuestion}
+                placeholder='질문을 입력하세요...'
+              />
+              <button
+                disabled={customQuestion.trim() === ''}>
+                <LogoWhiteIcon />
+              </button>
+            </div>
+          )}
+        </div>
+      </>
       {!showQuestions && !isWaitingForResponse && (
-        <div className='wrapper-hidden'>
+        <div className={`wrapper-hidden ${showInput ? 'showinput' : ''}`}>
           <ChatElem
             key="ask-again"
             chat={askAgainMessage}
@@ -119,6 +142,12 @@ const initialBotMessage = {
 
 const askAgainMessage = {
   message: '다시 질문하기',
+  type: 'question',
+  date: new Date().toISOString()
+};
+
+const otherQuestion = {
+  message: '기타 질문',
   type: 'question',
   date: new Date().toISOString()
 };
