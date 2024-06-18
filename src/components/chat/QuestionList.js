@@ -1,8 +1,8 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import ChatElem from './ChatElem';
 import './QuestionList.css';
 
-function QuestionList({ chatContainerRef, accessToken }) {
+function QuestionList({ chatContainerRef, accessToken, chatList }) {
   const [chats, setChats] = useState([initialBotMessage]);
   const [showQuestions, setShowQuestions] = useState(true);
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
@@ -12,6 +12,25 @@ function QuestionList({ chatContainerRef, accessToken }) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [chats]);
+
+  useEffect(() => {
+    if (chatList.length === 0) {
+      setChats([initialBotMessage]);
+    } else {
+      setShowQuestions(false)
+      const formattedChats = [{ ...initialBotMessage }];
+      chatList.forEach((chat, index) => {
+        formattedChats.push({ message: chat.text.S, type: 'user', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
+        formattedChats.push({ message: chat.message.S, type: 'bot', date: new Date(parseInt(chat.timestamp.N)).toISOString() });
+        if (index < chatList.length - 1) {
+          formattedChats.push(initialBotMessage);
+          formattedChats.push({ message: '다시 질문하기', type: 'user', date: new Date().toISOString() });
+        }
+      });
+      formattedChats.push(askAgainMessage);
+      setChats(formattedChats);
+    }
+  }, [chatList]);
 
   const handleQuestionClick = (clickedQuestion, idx) => {
     const newChats = [
