@@ -30,6 +30,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
       formattedChats.push(askAgainMessage);
       setChats(formattedChats);
     }
+    console.log(chatList)
   }, [chatList]);
 
   const handleQuestionClick = (clickedQuestion, idx) => {
