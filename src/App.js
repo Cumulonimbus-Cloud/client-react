@@ -32,13 +32,15 @@ function App() {
           element={<KakaoRedirect
                     setIsLogin={setIsLogin}
                     setAccessToken={setAccessToken}
-                    isLogin={isLogin} />} />
+                    isLogin={isLogin}
+                    setHasGradCard={setHasGradCard} />} />
         <Route path="/chat" element={<Chat accessToken={accessToken} />} />
         <Route path='*'
           element={<KakaoRedirect
             setIsLogin={setIsLogin}
             setAccessToken={setAccessToken}
-            isLogin={isLogin} />} />
+            isLogin={isLogin}
+            setHasGradCard={setHasGradCard} />} />
       </Routes>
     </div>
   );

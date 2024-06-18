@@ -3,7 +3,7 @@ import { LogoIcon } from "../../assets/header";
 import { Navigate } from "react-router-dom";
 import './KakaoRedirect.css';
 
-function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
+function KakaoRedirect({ setIsLogin, setAccessToken, isLogin, setHasGradCard }) {
     //const [isKakaoRedirect, setIsKakaoRedirect] = React.useState(false);
 
     const socialType = "kakao";
@@ -23,6 +23,7 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
             console.log(data);
             setAccessToken(data.result.accessToken);
             localStorage.setItem('kakaoToken', data.result.accessToken);
+            setHasGradCard(data.result.hasGradCard);
             setIsLogin(true);
         })
         .catch((error) => {
