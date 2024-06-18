@@ -22,8 +22,8 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin }) {
         .then((data) => {
             console.log(data);
             setAccessToken(data.result.accessToken);
+            localStorage.setItem('kakaoToken', data.result.accessToken);
             setIsLogin(true);
-
         })
         .catch((error) => {
             console.error(error);
