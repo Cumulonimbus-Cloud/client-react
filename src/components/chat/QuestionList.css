@@ -1,3 +1,72 @@
 .wrapper-hidden {
     overflow: hidden;
 }
+
+.wrapper-hidden.showinput:nth-last-child(4) {
+    margin-bottom: 4.6em;
+}
+
+.input-wrapper.fixed-bottom {
+    text-align: center;
+    z-index: 1000;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 1.3em;
+    width: calc(100% - 3em);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-wrapper input {
+    flex: 1; 
+    height: 4em !important;
+    padding: 0 1em;
+    margin: 0;
+    border: none;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    background-color: #FFFFFD;
+}
+
+.input-wrapper input:focus {
+    outline: 0.2em solid #dcdcdc;
+}
+
+.input-wrapper button {
+    width: 4em;
+    height: 4em;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+    flex-shrink: 0;
+    background-color: #0066B3;
+    border: 0.1em solid #0066B3;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.input-wrapper button:hover {
+    background-color: #0056A3;
+    border: 0.1em solid #0056A3;
+}
+
+.input-wrapper button:active {
+    background-color: #004693;
+    border: 0.1em solid #004693;
+}
+
+.input-wrapper button:focus {
+    outline: 0.2em solid #dcdcdc;
+}
+
+.input-wrapper button:disabled {
+    background-color: #616161;
+    border: 0.1em solid #616161;
+}
