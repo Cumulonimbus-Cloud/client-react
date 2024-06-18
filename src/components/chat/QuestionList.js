@@ -27,7 +27,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
           formattedChats.push(initialBotMessage);
         }
       });
-      formattedChats.push(askAgainMessage);
+      //formattedChats.push(askAgainMessage);
       setChats(formattedChats);
     }
     console.log(chatList)
