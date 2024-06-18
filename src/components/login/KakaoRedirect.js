@@ -23,8 +23,8 @@ function KakaoRedirect({ setIsLogin, setAccessToken, isLogin, setHasGradCard }) 
             console.log(data);
             setAccessToken(data.result.accessToken);
             localStorage.setItem('kakaoToken', data.result.accessToken);
-            setHasGradCard(data.result.hasGradCard);
-            localStorage.setItem('hasGradCard', data.result.hasGradCard);
+            setHasGradCard(data.result.hasGradeCard);
+            localStorage.setItem('hasGradCard', data.result.hasGradeCard);
             setIsLogin(true);
         })
         .catch((error) => {
