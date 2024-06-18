@@ -112,7 +112,7 @@ function QuestionList({ chatContainerRef, accessToken, chatList }) {
 export default QuestionList;
 
 const initialBotMessage = {
-  message: '안녕하세요! 인덕봇입니다 🦆 무엇이 궁금하신가요?',
+  message: '안녕하세요! 인덕봇입니다 🦆\n무엇이 궁금하신가요?',
   type: 'bot',
   date: new Date().toISOString()
 };
