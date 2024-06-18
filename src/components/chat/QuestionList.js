@@ -125,27 +125,27 @@ const askAgainMessage = {
 
 const questionList = [
   {
-      message: "아직 수강하지 않은 전공 필수 과목이 뭐야?",
+      message: "수강하지 않은 전공 필수 과목",
       type: "question",
       date: "2021-10-01 12:00:00",
   },
   {
-      message: "지금까지 이수한 전공 과목(들의 리스트)이 뭐야?",
+      message: "현재까지 이수한 전공 과목",
       type: "question",
       date: "2021-10-01 12:00:00",
   },
   {
-      message: "커리큘럼을 참조해서 졸업하기 위해 필요한 교양과목 중에서 안들은 과목이 있다면 과목 이름을 알려줘",
+      message: "수강 안 한 교양 과목",
       type: "question",
       date: "2021-10-01 12:00:00",
   },
   {
-      message: "이번 학기 몇 학점 들었는지 과목 명이랑 같이 알려줘",
+      message: "이번 학기에 수강한 과목과 총 학점",
       type: "question",
       date: "2021-10-01 12:00:00",
   },
   {
-      message: "내 성적표와 커리큘럼 바탕으로 다음에 들을 과목 추천해줘",
+      message: "다음 학기에 수강할 과목 추천",
       type: "question",
       date: "2021-10-01 12:00:00",
   }
